@@ -1,0 +1,218 @@
+{% extends "personal/header.html" %}
+{% block content %}
+
+{% load static %}
+
+
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+  
+    <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        th, td {
+          padding: 5px;
+          text-align: left;
+        }
+        
+     .accordion {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: 0.4s;
+      }
+      
+      .active, .accordion:hover {
+        background-color: #ccc;
+      }
+      
+      .accordion:after {
+        content: '\002B';
+        color: #777;
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
+      }
+      
+      .active:after {
+        content: "\2212";
+      }
+      
+      .panel {
+        padding: 0 18px;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+      }
+
+  
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+
+
+
+        </style>
+</head>
+
+<body>
+<h1>Add Crawl Site</h1>
+    <form method ="post" action="{% url 'dataset' %}" enctype="multipart/form-data" >
+      {%csrf_token%}
+      {{form.as_p}}
+      <button type="submit">Search</button>
+  </form>
+ 
+<br>
+    <div class="row">
+        <div class="column">
+          <div class="card">
+              <header class="w3-container w3-red">
+                  <h1>Concepts</h1>
+                  <p>Discovery can pull a list of the most recent and relevant news articles about this company.</p>
+                  </header>
+            {% for documents in Pos %}
+            <br>
+            <h5>{{documents.mdDate}}</h5>
+            <h3> <font color="red">{{documents.conText}}</font></h3>
+            <h5>{{documents.conRel}}</h5>
+            {% endfor %} 
+      
+          </div>
+        </div>
+      
+        <div class="column">
+          <div class="card">
+                  <header class="w3-container w3-red">
+                      <h1>Sentiment</h1>
+                      <p>Sentiment can be extracted from news articles across a variety of sources.</p>
+                      </header>
+                      {% for documents in Pos %}
+                <button class="accordion"><font color="red"> {{documents.mdTitle}}</font></button>
+                <div class="panel">   
+                    <center>
+                          <h1>{{documents.score}} %</h1>
+                          <h3>{{documents.label}}</h3>    
+                          
+                <br> 
+                </div>
+                <br>
+                {% endfor %}  
+          </div>
+        </div>
+        
+        <div class="column">
+          <div class="card">
+              <header class="w3-container w3-red">
+                  <h1>Categories</h1>
+                  <p>Returns a five-level taxonomy of the content. The top three categories are returned.</p>
+                </header>
+                    {% for documents in Pos %}
+                  <p><font color="red">{{documents.catLabel}}</font></p>
+                  {% endfor %} 
+                
+          </div>
+        </div>
+        
+        <div class="column">
+          <div class="card">
+              <header class="w3-container w3-red">
+                  <h1>Entities</h1>
+                  <p>Discovery can easily extract frequently mentioned entities - such as people, topics and companies - from the set of articles.</p>
+                </header>
+                
+                  {% for documents in Pos %}
+                  <p><font color="red">{{documents.entityText}}/{{documents.entityType}}</font></p>
+                  {% endfor %}
+          </div>
+        
+      </div>
+      
+<div>
+
+
+
+      
+
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+        
+        for (i = 0; i < acc.length; i++) {
+          acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight){
+              panel.style.maxHeight = null;
+            } else {
+              panel.style.maxHeight = panel.scrollHeight + "px";
+            } 
+          });
+        }
+
+        </script>
+</div>
+
+</body>
+
+</html>
+
+{% endblock %}
+
+
+
+  
+

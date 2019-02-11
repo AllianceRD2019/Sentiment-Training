@@ -1,0 +1,44 @@
+ISO 27001:2013
+Information Security Management System AWARENESS
+
+Info Chjallenges
+No absolute security
+People as the waekest Link
+No Inpenetrable barrier
+External/Internal Risks
+
+Establish and Maintain the effective ISMS 
+Replaced by 779-2:2002 Oct 2005
+Consistent pair witrh ISO 17799
+Intended to provide Foundation 3rd party audists
+Harmonizeze with other ISO standards 9001 14001
+
+This inte standard sp[ecifies trhe requiremnets for establishings implementing maintaining and cont. improving an info security and managemenr system. within the contxe of the org.
+
+PDCA Cycle , imple,emting executing 
+Plan Establishing the documented ISMS
+Do  Implement and operate The ISMS
+ Act Maintain and improve the effectiveness
+Check Monitor and review
+Input
+Info security Requirements and expectations
+Interested Parties
+Output
+Info security managed security managed as expected
+Interested Parties
+
+Act IMPROVEMENT
+CHECK- PERFORMANCE AND EVALUATION
+
+Benefits
+And Internationally recognized structured methodology
+A defined process to evaluate, implement and managed infromation security
+A set of tailored policies standards procedures and guidlines
+improved enterprise security  and continued protection
+Efficient and Effective Security planning anad management
+Increased credibility trust and confidencxe of partners and custopmers
+Redued liabilities and cost savings
+Compliance to all relevant laws and regulations
+Drives orgazinational commitment
+
+
